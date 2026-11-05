@@ -1,40 +1,68 @@
+
+
+
 pipeline {
+
     agent any
 
     stages {
 
         stage('Checkout') {
+
             steps {
-                checkout scm
+
+                echo 'Code checked out successfully'
+
             }
+
         }
 
         stage('Run Application') {
+
             steps {
-                sh 'python3 app.py'
+
+                bat '"C:\\Users\\STUDENT\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" app.py'
+
             }
+
         }
 
         stage('Run Tests') {
+
             steps {
-                sh 'python3 test.py'
+
+                bat '"C:\\Users\\STUDENT\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" test.py'
+
             }
+
         }
 
         stage('Build') {
+
             steps {
-                echo 'Build completed successfully'
+
+                echo 'Build completed successfully!'
+
             }
+
         }
+
     }
 
     post {
+
         success {
-            echo 'Jenkins Build Successful'
+
+            echo 'Jenkins Auto Build Successful!'
+
         }
 
         failure {
-            echo 'Jenkins Build Failed'
+
+            echo 'Jenkins Build Failed!'
+
         }
+
     }
+
 }
